@@ -177,12 +177,13 @@ def mergerFunc(myuser):
     #except:
     #    print('invalid username')
 
-#Give the final (would have been the csv export)
+#Export
 films = mergerFunc(username_request)
 
-films.to_csv(f'./{username_request}_letterboxd_export.csv')
+#films.to_csv(f'./{username_request}_letterboxd_export.csv')
 
+#Write to file: fail if file exists
 try:
     films.to_csv(f'./{username_request}_letterboxd_export.csv', mode='x')
 except FileExistsError:
-    films.to_csv('unique_name.csv')
+    films.to_csv(f'./{username_request}_latest_letterboxd_export_csv')
